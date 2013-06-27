@@ -68,3 +68,26 @@ mode        : selfcontained # {standalone, draft}
 
 ![plot of chunk cv.bcell](figure/cv.bcell.png) 
 
+
+----
+
+## Bias for Bcells
+
+
+![plot of chunk bias.bcell](figure/bias.bcell.png) 
+
+---
+
+## Bias for T-cells
+![plot of chunk bias.tcell](figure/bias.tcell.png) 
+
+---
+
+## Bias for T-regs
+![plot of chunk bias.treg](figure/bias.treg.png) 
+
+---
+
+## Bias for T-helpers
+![plot of chunk bias.thelp](figure/bias.thelp.png) 
+
