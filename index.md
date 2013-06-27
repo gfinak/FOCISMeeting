@@ -19,10 +19,24 @@ mode        : selfcontained # {standalone, draft}
 
 ---
 
-## Bcell Panel
+## B-cell Panel
 
 ![plot of chunk boxplots.bcell](figure/boxplots.bcell.png) 
 
 
 
 ---
+
+## T-cell Panel
+
+![plot of chunk boxplots.tcelll](figure/boxplots.tcelll.png) 
+
+
+
+---
+
+
+## T-reg Panel
+
+![plot of chunk boxplots.treg](figure/boxplots.treg.png) 
+

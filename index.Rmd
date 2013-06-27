@@ -25,7 +25,7 @@ ggplot(subset(THELPER,!Population%in%c("CD4","CD8","Lymphocytes")))+geom_boxplot
 
 ---
 
-## Bcell Panel
+## B-cell Panel
 
 ```{r boxplots.bcell,echo=FALSE,warning=FALSE,message=FALSE,error=FALSE,fig.width=14.5}
 ggplot(subset(BCELL,!Population%in%"Lymphocytes"))+geom_boxplot(aes(y=Proportion,x=Center,fill=Method))+facet_wrap(~Population,scales="free_y")
@@ -34,3 +34,21 @@ ggplot(subset(BCELL,!Population%in%"Lymphocytes"))+geom_boxplot(aes(y=Proportion
 
 
 ---
+
+## T-cell Panel
+
+```{r boxplots.tcelll,echo=FALSE,warning=FALSE,message=FALSE,error=FALSE,fig.width=14.5}
+ggplot(subset(TCELLS,!Population%in%"Lymphocytes"))+geom_boxplot(aes(y=Proportion,x=Center,fill=Method))+facet_wrap(~Population,scales="free_y")
+
+```
+
+
+---
+
+
+## T-reg Panel
+
+```{r boxplots.treg,echo=FALSE,warning=FALSE,message=FALSE,error=FALSE,fig.width=14.5}
+ggplot(subset(TREG,!Population%in%"Lymphocytes"))+geom_boxplot(aes(y=Proportion,x=Center,fill=Method))+facet_wrap(~Population,scales="free_y")
+
+```
