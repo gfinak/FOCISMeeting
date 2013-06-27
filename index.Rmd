@@ -19,7 +19,7 @@ suppressPackageStartupMessages(library(slidify))
 
 ```
 ```{r boxplots.thelper,echo=FALSE,warning=FALSE,message=FALSE,error=FALSE,fig.width=14.5}
-ggplot(subset(THELPER,!Population%in%c("CD4","CD8","Lymphocytes")))+geom_boxplot(aes(y=Proportion,x=Center,fill=Method))+facet_wrap(~Population,scales="free_y")
+ggplot(subset(THELPER,!Population%in%c("CD4","CD8","Lymphocytes")))+geom_boxplot(aes(y=Proportion,x=Center,fill=Method))+facet_wrap(~Population,scales="free_y")+scale_x_discrete(name="Center",labels=LETTERS[1:7])
 
 ```
 
@@ -28,7 +28,7 @@ ggplot(subset(THELPER,!Population%in%c("CD4","CD8","Lymphocytes")))+geom_boxplot
 ## B-cell Panel
 
 ```{r boxplots.bcell,echo=FALSE,warning=FALSE,message=FALSE,error=FALSE,fig.width=14.5}
-ggplot(subset(BCELL,!Population%in%"Lymphocytes"))+geom_boxplot(aes(y=Proportion,x=Center,fill=Method))+facet_wrap(~Population,scales="free_y")
+ggplot(subset(BCELL,!Population%in%"Lymphocytes"))+geom_boxplot(aes(y=Proportion,x=Center,fill=Method))+facet_wrap(~Population,scales="free_y")+scale_x_discrete(name="Center",labels=LETTERS[1:7])
 
 ```
 
@@ -38,7 +38,7 @@ ggplot(subset(BCELL,!Population%in%"Lymphocytes"))+geom_boxplot(aes(y=Proportion
 ## T-cell Panel
 
 ```{r boxplots.tcelll,echo=FALSE,warning=FALSE,message=FALSE,error=FALSE,fig.width=14.5}
-ggplot(subset(TCELLS,!Population%in%"Lymphocytes"))+geom_boxplot(aes(y=Proportion,x=Center,fill=Method))+facet_wrap(~Population,scales="free_y")
+ggplot(subset(TCELLS,!Population%in%"Lymphocytes"))+geom_boxplot(aes(y=Proportion,x=Center,fill=Method))+facet_wrap(~Population,scales="free_y")+scale_x_discrete(name="Center",labels=LETTERS[1:7])
 
 ```
 
@@ -49,6 +49,6 @@ ggplot(subset(TCELLS,!Population%in%"Lymphocytes"))+geom_boxplot(aes(y=Proportio
 ## T-reg Panel
 
 ```{r boxplots.treg,echo=FALSE,warning=FALSE,message=FALSE,error=FALSE,fig.width=14.5}
-ggplot(subset(TREG,!Population%in%"Lymphocytes"))+geom_boxplot(aes(y=Proportion,x=Center,fill=Method))+facet_wrap(~Population,scales="free_y")
+ggplot(subset(TREG,!Population%in%"Lymphocytes"))+geom_boxplot(aes(y=Proportion,x=Center,fill=Method))+facet_wrap(~Population,scales="free_y")+scale_x_discrete(name="Center",labels=LETTERS[1:7])
 
 ```
