@@ -40,3 +40,31 @@ mode        : selfcontained # {standalone, draft}
 
 ![plot of chunk boxplots.treg](figure/boxplots.treg.png) 
 
+
+---
+  
+## Coefficient of Variation for T-cells
+
+![plot of chunk cv.tcell](figure/cv.tcell.png) 
+
+
+---
+  
+## Coefficient of Variation for T-helper
+
+![plot of chunk cv.thelper](figure/cv.thelper.png) 
+
+
+---
+  
+## Coefficient of Variation for T-regulatory
+
+![plot of chunk cv.treg](figure/cv.treg.png) 
+
+
+---
+  
+## Coefficient of Variation for B-cells
+
+![plot of chunk cv.bcell](figure/cv.bcell.png) 
+

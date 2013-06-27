@@ -17,8 +17,9 @@ load("../../data/MergedTables.rda")
 suppressPackageStartupMessages(library(ggplot2))
 suppressPackageStartupMessages(library(slidify))
 
+
 ```
-```{r boxplots.thelper,echo=FALSE,warning=FALSE,message=FALSE,error=FALSE,fig.width=14.5}
+```{r boxplots.thelper,echo=FALSE,warning=FALSE,message=FALSE,error=FALSE,fig.width=14.5,cache=TRUE}
 ggplot(subset(THELPER,!Population%in%c("CD4","CD8","Lymphocytes")))+geom_boxplot(aes(y=Proportion,x=Center,fill=Method))+facet_wrap(~Population,scales="free_y")+scale_x_discrete(name="Center",labels=LETTERS[1:7])
 
 ```
@@ -27,7 +28,7 @@ ggplot(subset(THELPER,!Population%in%c("CD4","CD8","Lymphocytes")))+geom_boxplot
 
 ## B-cell Panel
 
-```{r boxplots.bcell,echo=FALSE,warning=FALSE,message=FALSE,error=FALSE,fig.width=14.5}
+```{r boxplots.bcell,echo=FALSE,warning=FALSE,message=FALSE,error=FALSE,fig.width=14.5,cache=TRUE}
 ggplot(subset(BCELL,!Population%in%"Lymphocytes"))+geom_boxplot(aes(y=Proportion,x=Center,fill=Method))+facet_wrap(~Population,scales="free_y")+scale_x_discrete(name="Center",labels=LETTERS[1:7])
 
 ```
@@ -37,8 +38,8 @@ ggplot(subset(BCELL,!Population%in%"Lymphocytes"))+geom_boxplot(aes(y=Proportion
 
 ## T-cell Panel
 
-```{r boxplots.tcelll,echo=FALSE,warning=FALSE,message=FALSE,error=FALSE,fig.width=14.5}
-ggplot(subset(TCELLS,!Population%in%"Lymphocytes"))+geom_boxplot(aes(y=Proportion,x=Center,fill=Method))+facet_wrap(~Population,scales="free_y")+scale_x_discrete(name="Center",labels=LETTERS[1:7])
+```{r boxplots.tcelll,echo=FALSE,warning=FALSE,message=FALSE,error=FALSE,fig.width=14.5,cache=TRUE}
+ggplot(subset(TCELLS,!Sample%in%c("1349")&!Population%in%"Lymphocytes"))+geom_boxplot(aes(y=Proportion,x=Center,fill=Method))+facet_wrap(~Population,scales="free_y")+scale_x_discrete(name="Center",labels=LETTERS[1:7])
 
 ```
 
@@ -48,7 +49,47 @@ ggplot(subset(TCELLS,!Population%in%"Lymphocytes"))+geom_boxplot(aes(y=Proportio
 
 ## T-reg Panel
 
-```{r boxplots.treg,echo=FALSE,warning=FALSE,message=FALSE,error=FALSE,fig.width=14.5}
+```{r boxplots.treg,echo=FALSE,warning=FALSE,message=FALSE,error=FALSE,fig.width=14.5,cache=TRUE}
 ggplot(subset(TREG,!Population%in%"Lymphocytes"))+geom_boxplot(aes(y=Proportion,x=Center,fill=Method))+facet_wrap(~Population,scales="free_y")+scale_x_discrete(name="Center",labels=LETTERS[1:7])
+
+```
+
+---
+  
+## Coefficient of Variation for T-cells
+
+```{r cv.tcell,echo=FALSE,message=FALSE,warning=FALSE,error=FALSE,fig.width=14.5,cache=TRUE}
+
+ggplot(ddply(TCELLS,.(Center,Population,Method),summarize,CV=sd(Proportion,na.rm=TRUE)/mean(Proportion,na.rm=TRUE)))+geom_point(aes(x=Center,y=CV,color=Method,shape=Method),alpha=0.8,size=4)+facet_wrap(~Population)+scale_x_discrete(name="Center",labels=LETTERS[1:7])
+
+```
+
+---
+  
+## Coefficient of Variation for T-helper
+
+```{r cv.thelper,echo=FALSE,message=FALSE,warning=FALSE,error=FALSE,fig.width=14.5,cache=TRUE}
+
+ggplot(ddply(THELPER,.(Center,Population,Method),summarize,CV=sd(Proportion,na.rm=TRUE)/mean(Proportion,na.rm=TRUE)))+geom_point(aes(x=Center,y=CV,color=Method,shape=Method),alpha=0.8,size=4)+facet_wrap(~Population)+scale_x_discrete(name="Center",labels=LETTERS[1:7])
+
+```
+
+---
+  
+## Coefficient of Variation for T-regulatory
+
+```{r cv.treg,echo=FALSE,message=FALSE,warning=FALSE,error=FALSE,fig.width=14.5,cache=TRUE}
+
+ggplot(ddply(TREG,.(Center,Population,Method),summarize,CV=sd(Proportion,na.rm=TRUE)/mean(Proportion,na.rm=TRUE)))+geom_point(aes(x=Center,y=CV,color=Method,shape=Method),alpha=0.8,size=4)+facet_wrap(~Population)+scale_x_discrete(name="Center",labels=LETTERS[1:7])
+
+```
+
+---
+  
+## Coefficient of Variation for B-cells
+
+```{r cv.bcell,echo=FALSE,message=FALSE,warning=FALSE,error=FALSE,fig.width=14.5,cache=TRUE}
+
+ggplot(ddply(BCELL,.(Center,Population,Method),summarize,CV=sd(Proportion,na.rm=TRUE)/mean(Proportion,na.rm=TRUE)))+geom_point(aes(x=Center,y=CV,color=Method,shape=Method),alpha=0.8,size=4)+facet_wrap(~Population)+scale_x_discrete(name="Center",labels=LETTERS[1:7])
 
 ```
