@@ -19,16 +19,15 @@ suppressPackageStartupMessages(library(slidify))
 
 
 ```
-```{r boxplots.thelper,echo=FALSE,warning=FALSE,message=FALSE,error=FALSE,fig.width=14.5,cache=TRUE}
+```{r boxplots.thelper,echo=FALSE,warning=FALSE,message=FALSE,error=FALSE,fig.width=14.5,cache=TRUE,dpi=200,out.width=1024}
 ggplot(subset(THELPER,!Population%in%c("CD4","CD8","Lymphocytes")))+geom_boxplot(aes(y=Proportion,x=Center,fill=Method))+facet_wrap(~Population,scales="free_y")+scale_x_discrete(name="Center",labels=LETTERS[1:7])
-
 ```
 
 ---
 
 ## B-cell Panel
 
-```{r boxplots.bcell,echo=FALSE,warning=FALSE,message=FALSE,error=FALSE,fig.width=14.5,cache=TRUE}
+```{r boxplots.bcell,echo=FALSE,warning=FALSE,message=FALSE,error=FALSE,fig.width=14.5,cache=TRUE,dpi=200,out.width=1024}
 ggplot(subset(BCELL,!Population%in%"Lymphocytes"))+geom_boxplot(aes(y=Proportion,x=Center,fill=Method))+facet_wrap(~Population,scales="free_y")+scale_x_discrete(name="Center",labels=LETTERS[1:7])
 
 ```
@@ -38,7 +37,7 @@ ggplot(subset(BCELL,!Population%in%"Lymphocytes"))+geom_boxplot(aes(y=Proportion
 
 ## T-cell Panel
 
-```{r boxplots.tcelll,echo=FALSE,warning=FALSE,message=FALSE,error=FALSE,fig.width=14.5,cache=TRUE}
+```{r boxplots.tcelll,echo=FALSE,warning=FALSE,message=FALSE,error=FALSE,fig.width=14.5,cache=TRUE,dpi=200,out.width=1024}
 ggplot(subset(TCELLS,!Sample%in%c("1349")&!Population%in%"Lymphocytes"))+geom_boxplot(aes(y=Proportion,x=Center,fill=Method))+facet_wrap(~Population,scales="free_y")+scale_x_discrete(name="Center",labels=LETTERS[1:7])
 
 ```
@@ -49,7 +48,7 @@ ggplot(subset(TCELLS,!Sample%in%c("1349")&!Population%in%"Lymphocytes"))+geom_bo
 
 ## T-reg Panel
 
-```{r boxplots.treg,echo=FALSE,warning=FALSE,message=FALSE,error=FALSE,fig.width=14.5,cache=TRUE}
+```{r boxplots.treg,echo=FALSE,warning=FALSE,message=FALSE,error=FALSE,fig.width=14.5,cache=TRUE,dpi=200,out.width=1024}
 ggplot(subset(TREG,!Population%in%"Lymphocytes"))+geom_boxplot(aes(y=Proportion,x=Center,fill=Method))+facet_wrap(~Population,scales="free_y")+scale_x_discrete(name="Center",labels=LETTERS[1:7])
 
 ```
@@ -58,7 +57,7 @@ ggplot(subset(TREG,!Population%in%"Lymphocytes"))+geom_boxplot(aes(y=Proportion,
   
 ## Coefficient of Variation for T-cells
 
-```{r cv.tcell,echo=FALSE,message=FALSE,warning=FALSE,error=FALSE,fig.width=14.5}
+```{r cv.tcell,echo=FALSE,message=FALSE,warning=FALSE,error=FALSE,fig.width=14.5,dpi=200,out.width=1024}
 
 ggplot(ddply(TCELLS,.(Center,Population,Method),summarize,CV=sd(Proportion,na.rm=TRUE)/mean(Proportion,na.rm=TRUE)))+geom_point(aes(x=Center,y=CV*100,color=Method,shape=Method),alpha=0.8,size=4)+facet_wrap(~Population)+scale_x_discrete(name="Center",labels=LETTERS[1:7])
 
@@ -68,7 +67,7 @@ ggplot(ddply(TCELLS,.(Center,Population,Method),summarize,CV=sd(Proportion,na.rm
   
 ## Coefficient of Variation for T-helper
 
-```{r cv.thelper,echo=FALSE,message=FALSE,warning=FALSE,error=FALSE,fig.width=14.5}
+```{r cv.thelper,echo=FALSE,message=FALSE,warning=FALSE,error=FALSE,fig.width=14.5,dpi=200,out.width=1024}
 
 ggplot(ddply(THELPER,.(Center,Population,Method),summarize,CV=sd(Proportion,na.rm=TRUE)/mean(Proportion,na.rm=TRUE)))+geom_point(aes(x=Center,y=CV*100,color=Method,shape=Method),alpha=0.8,size=4)+facet_wrap(~Population)+scale_x_discrete(name="Center",labels=LETTERS[1:7])
 
@@ -78,7 +77,7 @@ ggplot(ddply(THELPER,.(Center,Population,Method),summarize,CV=sd(Proportion,na.r
   
 ## Coefficient of Variation for T-regulatory
 
-```{r cv.treg,echo=FALSE,message=FALSE,warning=FALSE,error=FALSE,fig.width=14.5}
+```{r cv.treg,echo=FALSE,message=FALSE,warning=FALSE,error=FALSE,fig.width=14.5,dpi=200,out.width=1024}
 
 ggplot(ddply(TREG,.(Center,Population,Method),summarize,CV=sd(Proportion,na.rm=TRUE)/mean(Proportion,na.rm=TRUE)))+geom_point(aes(x=Center,y=CV*100,color=Method,shape=Method),alpha=0.8,size=4)+facet_wrap(~Population)+scale_x_discrete(name="Center",labels=LETTERS[1:7])
 
@@ -88,7 +87,7 @@ ggplot(ddply(TREG,.(Center,Population,Method),summarize,CV=sd(Proportion,na.rm=T
   
 ## Coefficient of Variation for B-cells
 
-```{r cv.bcell,echo=FALSE,message=FALSE,warning=FALSE,error=FALSE,fig.width=14.5}
+```{r cv.bcell,echo=FALSE,message=FALSE,warning=FALSE,error=FALSE,fig.width=14.5,dpi=200,out.width=1024}
 
 ggplot(ddply(BCELL,.(Center,Population,Method),summarize,CV=sd(Proportion,na.rm=TRUE)/mean(Proportion,na.rm=TRUE)))+geom_point(aes(x=Center,y=CV*100,color=Method,shape=Method),alpha=0.8,size=4)+facet_wrap(~Population)+scale_x_discrete(name="Center",labels=LETTERS[1:7])
 
@@ -99,7 +98,7 @@ ggplot(ddply(BCELL,.(Center,Population,Method),summarize,CV=sd(Proportion,na.rm=
 ## Bias for Bcells
 
 
-```{r bias.bcell,echo=FALSE,message=FALSE,warning=FALSE,error=FALSE,fig.width=14.5,cache=FALSE}
+```{r bias.bcell,echo=FALSE,message=FALSE,warning=FALSE,error=FALSE,fig.width=14.5,cache=FALSE,dpi=200,out.width=1024}
 bias<-function(FOO){
   FOO <- data.table(FOO)
   setkey(FOO,"Center","File","Population")
@@ -123,22 +122,58 @@ ggplot(A)+geom_point(aes(x=Center,y=100*SPE,color=Method),alpha=0.8,size=4)+face
 ---
 
 ## Bias for T-cells
-```{r bias.tcell,echo=FALSE,message=FALSE,warning=FALSE,error=FALSE,fig.width=14.5,cache=FALSE}
+```{r bias.tcell,echo=FALSE,message=FALSE,warning=FALSE,error=FALSE,fig.width=14.5,cache=FALSE,dpi=200,out.width=1024}
 B<-bias(TCELLS)
 ggplot(B)+geom_point(aes(x=Center,y=100*SPE,color=Method),alpha=0.8,size=4)+facet_wrap(~Population,scales="free_y")+scale_x_discrete(name="Center",labels=LETTERS[1:7])+scale_y_continuous(name="% Error")
 ```
 ---
 
 ## Bias for T-regs
-```{r bias.treg,echo=FALSE,message=FALSE,warning=FALSE,error=FALSE,fig.width=14.5,cache=FALSE}
+```{r bias.treg,echo=FALSE,message=FALSE,warning=FALSE,error=FALSE,fig.width=14.5,cache=FALSE,dpi=200,out.width=1024}
   C<-bias(TREG)
 ggplot(C)+geom_point(aes(x=Center,y=100*SPE,color=Method),alpha=0.8,size=4)+facet_wrap(~Population,scales="free_y")+scale_x_discrete(name="Center",labels=LETTERS[1:7])+scale_y_continuous(name="% Error")
 ```
 ---
 
 ## Bias for T-helpers
-```{r bias.thelp,echo=FALSE,message=FALSE,warning=FALSE,error=FALSE,fig.width=14.5,cache=FALSE}
+```{r bias.thelp,echo=FALSE,message=FALSE,warning=FALSE,error=FALSE,fig.width=14.5,cache=FALSE,dpi=200,out.width=1024}
   D<-bias(THELPER)
 ggplot(D)+geom_point(aes(x=Center,y=100*SPE,color=Method),alpha=0.8,size=4)+facet_wrap(~Population,scales="free_y")+scale_x_discrete(name="Center",labels=LETTERS[1:7])+scale_y_continuous(name="% Error")
   
+```
+
+---
+
+## CV Across Centers for T-cells
+
+```{r cross.center.tcells,echo=FALSE,message=FALSE,warning=FALSE,error=FALSE,fig.width=14.5,cache=FALSE,dpi=200,out.width=1024}
+foo <- ddply(subset(TCELLS),.(Method,Sample,Population),summarize,CV = 100*sd(Proportion,na.rm=TRUE)/mean(Proportion,na.rm=TRUE))
+ggplot(foo)+geom_point(aes(x=Method,y=CV,color=Method),alpha=0.8,size=4)+facet_grid(Sample~Population,scales="free_y")+scale_x_discrete("Method",labels="")
+```
+
+---
+
+## CV Across Centers for B-cells
+
+```{r cross.center.bcells,echo=FALSE,message=FALSE,warning=FALSE,error=FALSE,fig.width=14.5,cache=FALSE,dpi=200,out.width=1024}
+foo <- ddply(subset(BCELL),.(Method,Sample,Population),summarize,CV = 100*sd(Proportion,na.rm=TRUE)/mean(Proportion,na.rm=TRUE))
+ggplot(foo)+geom_point(aes(x=Method,y=CV,color=Method),alpha=0.8,size=4)+facet_grid(Sample~Population,scales="free_y")+scale_x_discrete("Method",labels="")
+```
+
+---
+
+## CV Across Centers for T-regs
+
+```{r cross.center.tregs,echo=FALSE,message=FALSE,warning=FALSE,error=FALSE,fig.width=14.5,cache=FALSE,dpi=200,out.width=1024}
+foo <- ddply(subset(TREG),.(Method,Sample,Population),summarize,CV = 100*sd(Proportion,na.rm=TRUE)/mean(Proportion,na.rm=TRUE))
+ggplot(foo)+geom_point(aes(x=Method,y=CV,color=Method),alpha=0.8,size=4)+facet_grid(Sample~Population,scales="free_y")+scale_x_discrete("Method",labels="")
+```
+
+---
+
+## CV Across Centers for T-helpers
+
+```{r cross.center.thelper,echo=FALSE,message=FALSE,warning=FALSE,error=FALSE,fig.width=14.5,cache=FALSE,dpi=200,out.width=1024}
+foo <- ddply(subset(THELPER),.(Method,Sample,Population),summarize,CV = 100*sd(Proportion,na.rm=TRUE)/mean(Proportion,na.rm=TRUE))
+ggplot(foo)+geom_point(aes(x=Method,y=CV,color=Method),alpha=0.8,size=4)+facet_grid(Sample~Population,scales="free_y")+scale_x_discrete("Method",labels="")
 ```
